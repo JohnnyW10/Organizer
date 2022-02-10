@@ -1,7 +1,5 @@
 import React from "react";
 
-
-
 function Element(props){
   return(
     <div className="elements">
