@@ -20,7 +20,17 @@ class ShopingList extends React.Component {
     let list = this.state.shop_list;
     list.push(el_sh_list);
     this.setState({shop_list: list})
-    console.log(list)
+  }
+
+  delete_from_list = (element) => {
+    let chosen_element = element;
+    let list = this.state.shop_list;
+    let index = list.indexOf(chosen_element);
+    if(index !== -1) {
+      list.splice(index, 1);
+    }
+    this.setState({shop_list: list});
+    
   }
 
   render () {
@@ -29,13 +39,15 @@ class ShopingList extends React.Component {
         <h3>Shoping List</h3>
         <input type='text' id='shoping_item' placeholder="What you want to add ..."></input>
         <button onClick={this.upload_shoping_list}>Add to list</button>
+        <h4>Click on the item you want to remove</h4>
         <div>
-          {this.state.shop_list.map(to_buy => <p key={to_buy} >- {to_buy}</p>)}
+          {this.state.shop_list.map(to_buy => <p key={to_buy} onClick={() => this.delete_from_list(to_buy)} name={to_buy}>- {to_buy}</p>)}
         </div>
       </div>
     );
   }
 }
+
 
 function renddderrr() {
   return (<div>
